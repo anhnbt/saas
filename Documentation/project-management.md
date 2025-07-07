@@ -4,18 +4,18 @@
 
 ### 1.1 Thông tin dự án
 - **Tên dự án**: SaaS Quản lý Salon Nails
-- **Thời gian thực hiện**: 28/06/2025 - 05/07/2025
+- **Thời gian thực hiện**: 10/07/2025 - 18/08/2025 (40 ngày)
 - **Phương pháp**: Solo Development với Agile principles
 - **Developer**: Nguyễn Bá Tuấn Anh (Solo Full-stack Developer)
 - **Stakeholder**: Chủ salon muốn bán giải pháp SaaS cho các salon nails khác
 
 ### 1.2 Thông tin stakeholder và mô hình kinh doanh
 
-| Vai trò                | Mô tả                                                   | Mục tiêu                                                        |
-| ---------------------- | ------------------------------------------------------- | --------------------------------------------------------------- |
-| **Client/Stakeholder** | Chủ salon nails có kinh nghiệm, muốn mở rộng kinh doanh | Tạo ra sản phẩm SaaS để bán cho các salon nails khác            |
-| **End Users**          | Các chủ salon nails khác (khách hàng của stakeholder)   | Quản lý salon hiệu quả, tăng doanh thu, giữ chân khách hàng     |
-| **Developer**          | Nguyễn Bá Tuấn Anh                                      | Phát triển MVP trong 7 ngày, đảm bảo chất lượng và tính khả thi |
+| Vai trò                | Mô tả                                                   | Mục tiêu                                                         |
+| ---------------------- | ------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Client/Stakeholder** | Chủ salon nails có kinh nghiệm, muốn mở rộng kinh doanh | Tạo ra sản phẩm SaaS để bán cho các salon nails khác             |
+| **End Users**          | Các chủ salon nails khác (khách hàng của stakeholder)   | Quản lý salon hiệu quả, tăng doanh thu, giữ chân khách hàng      |
+| **Developer**          | Nguyễn Bá Tuấn Anh                                      | Phát triển MVP trong 40 ngày, đảm bảo chất lượng và tính khả thi |
 
 ### 1.3 Mô hình kinh doanh B2B SaaS
 - **Stakeholder** trả tiền cho việc phát triển sản phẩm
@@ -23,8 +23,8 @@
 - **Revenue model**: Monthly/yearly subscription từ các salon sử dụng
 - **Target market**: Các salon nails nhỏ và vừa tại Việt Nam
 
-### 1.4 Tech Stack đã điều chỉnh
-- **Database**: MySQL (thay vì PostgreSQL)
+### 1.4 Tech Stack 
+- **Database**: MySQL
 - **Server**: Ubuntu Linux
 - **Backend**: Spring Boot với MySQL
 - **Frontend**: React Native (Mobile), Next.js (Dashboard)
@@ -32,83 +32,84 @@
 
 ### 1.5 Phân công công việc (Solo Development)
 
-| STT   | Tên công việc                | Người thực hiện    | Thời gian bắt đầu | Thời gian kết thúc | Trạng thái       | Ghi chú                           |
-| ----- | ---------------------------- | ------------------ | ----------------- | ------------------ | ---------------- | --------------------------------- |
-| **1** | **GIAI ĐOẠN LẬP TÀI LIỆU**   |                    | **28/06/2025**    | **30/06/2025**     |                  |                                   |
-| 1.1   | Phân tích yêu cầu hệ thống   | Nguyễn Bá Tuấn Anh | 28/06/2025        | 28/06/2025         | ✅ Hoàn thành     | Trao đổi với stakeholder          |
-| 1.2   | Thiết kế kiến trúc hệ thống  | Nguyễn Bá Tuấn Anh | 28/06/2025        | 29/06/2025         | ✅ Hoàn thành     | Microservices với MySQL           |
-| 1.3   | Thiết kế cơ sở dữ liệu       | Nguyễn Bá Tuấn Anh | 29/06/2025        | 29/06/2025         | ✅ Hoàn thành     | MySQL schema design               |
-| 1.4   | Thiết kế UI/UX mockups       | Nguyễn Bá Tuấn Anh | 28/06/2025        | 30/06/2025         | ✅ Hoàn thành     | Mobile-first, admin dashboard     |
-| 1.5   | Lập tài liệu kỹ thuật        | Nguyễn Bá Tuấn Anh | 29/06/2025        | 30/06/2025         | ✅ Hoàn thành     | Comprehensive documentation       |
-| **2** | **GIAI ĐOẠN PHÁT TRIỂN**     |                    | **01/07/2025**    | **04/07/2025**     |                  |                                   |
-| 2.1   | Setup môi trường development | Nguyễn Bá Tuấn Anh | 01/07/2025        | 01/07/2025         | ✅ Hoàn thành     | Docker, MySQL, Ubuntu setup       |
-| 2.2   | Phát triển Backend APIs      |                    |                   |                    |                  |                                   |
-| 2.2.1 | Customer Service API         | Nguyễn Bá Tuấn Anh | 01/07/2025        | 02/07/2025         | 🔄 Đang thực hiện | Check-in, customer management     |
-| 2.2.2 | POS Service API              | Nguyễn Bá Tuấn Anh | 02/07/2025        | 03/07/2025         | ⏳ Chờ thực hiện  | Order, payment processing         |
-| 2.2.3 | Marketing Service API        | Nguyễn Bá Tuấn Anh | 03/07/2025        | 04/07/2025         | ⏳ Chờ thực hiện  | Campaign, notification            |
-| 2.3   | Phát triển Frontend          |                    |                   |                    |                  |                                   |
-| 2.3.1 | Customer Mobile App          | Nguyễn Bá Tuấn Anh | 02/07/2025        | 04/07/2025         | 🔄 Đang thực hiện | React Native, check-in flow       |
-| 2.3.2 | Admin Dashboard              | Nguyễn Bá Tuấn Anh | 01/07/2025        | 03/07/2025         | 🔄 Đang thực hiện | Next.js, responsive design        |
-| 2.3.3 | POS Interface                | Nguyễn Bá Tuấn Anh | 03/07/2025        | 04/07/2025         | ⏳ Chờ thực hiện  | Web-based POS, tablet friendly    |
-| **3** | **GIAI ĐOẠN KIỂM THỬ**       |                    | **04/07/2025**    | **05/07/2025**     |                  |                                   |
-| 3.1   | Unit Testing Backend         | Nguyễn Bá Tuấn Anh | 04/07/2025        | 04/07/2025         | ⏳ Chờ thực hiện  | JUnit tests, coverage >= 70%      |
-| 3.2   | Integration Testing          | Nguyễn Bá Tuấn Anh | 04/07/2025        | 05/07/2025         | ⏳ Chờ thực hiện  | API testing, database integration |
-| 3.3   | Frontend Testing             | Nguyễn Bá Tuấn Anh | 04/07/2025        | 05/07/2025         | ⏳ Chờ thực hiện  | Manual testing, user flows        |
-| 3.4   | User Acceptance Testing      | Nguyễn Bá Tuấn Anh | 05/07/2025        | 05/07/2025         | ⏳ Chờ thực hiện  | Demo với stakeholder              |
-| 3.5   | Performance Testing          | Nguyễn Bá Tuấn Anh | 05/07/2025        | 05/07/2025         | ⏳ Chờ thực hiện  | Basic load testing                |
+| STT   | Tên công việc                 | Người thực hiện    | Thời gian bắt đầu | Thời gian kết thúc | Trạng thái      | Ghi chú                             |
+| ----- | ----------------------------- | ------------------ | ----------------- | ------------------ | --------------- | ----------------------------------- |
+| **1** | **GIAI ĐOẠN LẬP TÀI LIỆU**    |                    | **10/07/2025**    | **25/07/2025**     |                 |                                     |
+| 1.1   | Phân tích yêu cầu hệ thống    | Nguyễn Bá Tuấn Anh | 10/07/2025        | 12/07/2025         | ⏳ Chờ thực hiện | Trao đổi với stakeholder            |
+| 1.2   | Thiết kế kiến trúc hệ thống   | Nguyễn Bá Tuấn Anh | 13/07/2025        | 16/07/2025         | ⏳ Chờ thực hiện | Microservices với MySQL             |
+| 1.3   | Thiết kế cơ sở dữ liệu        | Nguyễn Bá Tuấn Anh | 17/07/2025        | 19/07/2025         | ⏳ Chờ thực hiện | MySQL schema design                 |
+| 1.4   | Thiết kế UI/UX mockups        | Nguyễn Bá Tuấn Anh | 20/07/2025        | 22/07/2025         | ⏳ Chờ thực hiện | Mobile-first, admin dashboard       |
+| 1.5   | Lập tài liệu kỹ thuật         | Nguyễn Bá Tuấn Anh | 23/07/2025        | 24/07/2025         | ⏳ Chờ thực hiện | Comprehensive documentation         |
+| 1.6   | Review và hoàn thiện tài liệu | Nguyễn Bá Tuấn Anh | 25/07/2025        | 25/07/2025         | ⏳ Chờ thực hiện | Review toàn bộ tài liệu giai đoạn 1 |
+| **2** | **GIAI ĐOẠN PHÁT TRIỂN**      |                    | **26/07/2025**    | **10/08/2025**     |                 |                                     |
+| 2.1   | Setup môi trường development  | Nguyễn Bá Tuấn Anh | 26/07/2025        | 26/07/2025         | ⏳ Chờ thực hiện | Docker, MySQL, Ubuntu setup         |
+| 2.2   | Phát triển Backend APIs       |                    |                   |                    |                 |                                     |
+| 2.2.1 | Customer Service API          | Nguyễn Bá Tuấn Anh | 27/07/2025        | 01/08/2025         | ⏳ Chờ thực hiện | Check-in, customer management       |
+| 2.2.2 | POS Service API               | Nguyễn Bá Tuấn Anh | 02/08/2025        | 05/08/2025         | ⏳ Chờ thực hiện | Order, payment processing           |
+| 2.2.3 | Marketing Service API         | Nguyễn Bá Tuấn Anh | 06/08/2025        | 08/08/2025         | ⏳ Chờ thực hiện | Campaign, notification              |
+| 2.3   | Phát triển Frontend           |                    |                   |                    |                 |                                     |
+| 2.3.1 | Customer Mobile App           | Nguyễn Bá Tuấn Anh | 28/07/2025        | 03/08/2025         | ⏳ Chờ thực hiện | React Native, check-in flow         |
+| 2.3.2 | Admin Dashboard               | Nguyễn Bá Tuấn Anh | 29/07/2025        | 04/08/2025         | ⏳ Chờ thực hiện | Next.js, responsive design          |
+| 2.3.3 | POS Interface                 | Nguyễn Bá Tuấn Anh | 07/08/2025        | 10/08/2025         | ⏳ Chờ thực hiện | Web-based POS, tablet friendly      |
+| **3** | **GIAI ĐOẠN KIỂM THỬ**        |                    | **11/08/2025**    | **18/08/2025**     |                 |                                     |
+| 3.1   | Unit Testing Backend          | Nguyễn Bá Tuấn Anh | 11/08/2025        | 13/08/2025         | ⏳ Chờ thực hiện | JUnit tests, coverage >= 70%        |
+| 3.2   | Integration Testing           | Nguyễn Bá Tuấn Anh | 14/08/2025        | 15/08/2025         | ⏳ Chờ thực hiện | API testing, database integration   |
+| 3.3   | Frontend Testing              | Nguyễn Bá Tuấn Anh | 16/08/2025        | 17/08/2025         | ⏳ Chờ thực hiện | Manual testing, user flows          |
+| 3.4   | User Acceptance Testing       | Nguyễn Bá Tuấn Anh | 18/08/2025        | 18/08/2025         | ⏳ Chờ thực hiện | Demo với stakeholder                |
+| 3.5   | Performance Testing           | Nguyễn Bá Tuấn Anh | 18/08/2025        | 18/08/2025         | ⏳ Chờ thực hiện | Basic load testing                  |
 
 ### 1.6 Milestone và Deliverables
 
-| Milestone                | Ngày hoàn thành | Deliverables                           | Trạng thái       |
-| ------------------------ | --------------- | -------------------------------------- | ---------------- |
-| M1: Hoàn thành tài liệu  | 30/06/2025      | Tài liệu phân tích, thiết kế, mockups  | ✅ Hoàn thành     |
-| M2: MVP Backend          | 03/07/2025      | Customer API, POS API cơ bản           | 🔄 Đang thực hiện |
-| M3: MVP Frontend         | 04/07/2025      | Mobile app, Admin dashboard            | 🔄 Đang thực hiện |
-| M4: Demo với stakeholder | 05/07/2025      | Hệ thống hoàn chỉnh, demo presentation | ⏳ Chờ thực hiện  |
+| Milestone                | Ngày hoàn thành | Deliverables                           | Trạng thái      |
+| ------------------------ | --------------- | -------------------------------------- | --------------- |
+| M1: Hoàn thành tài liệu  | 25/07/2025      | Tài liệu phân tích, thiết kế, mockups  | ⏳ Chờ thực hiện |
+| M2: MVP Backend          | 08/08/2025      | Customer API, POS API cơ bản           | ⏳ Chờ thực hiện |
+| M3: MVP Frontend         | 10/08/2025      | Mobile app, Admin dashboard            | ⏳ Chờ thực hiện |
+| M4: Demo với stakeholder | 18/08/2025      | Hệ thống hoàn chỉnh, demo presentation | ⏳ Chờ thực hiện |
 
 ## 2. DANH SÁCH KIỂM TRA XÁC THỰC (Check List of Validation)
 
 ### 2.1 Kiểm tra chức năng hệ thống
 
-| STT | Tiêu chí kiểm tra                                                                     | Đã xác thực     | Ghi chú                                |
-| --- | ------------------------------------------------------------------------------------- | --------------- | -------------------------------------- |
-| 1   | Tất cả các tùy chọn trong ứng dụng có hiển thị kết quả chính xác không?               | ✅ Có            | Đã test trên môi trường dev            |
-| 2   | Chức năng ứng dụng có giải quyết được vấn đề của người dùng và đáp ứng nhu cầu không? | ✅ Có            | Phù hợp với yêu cầu nghiệp vụ salon    |
-| 3   | Phần cứng và phần mềm đã được lựa chọn đúng chưa?                                     | ✅ Có            | Tech stack phù hợp với yêu cầu         |
-| 4   | Đảm bảo dữ liệu tuân thủ các ràng buộc                                                | ✅ Có            | Database constraints đã được thiết lập |
-| 5   | Hệ thống có thể xử lý đồng thời nhiều người dùng không?                               | ⏳ Đang kiểm tra | Cần test performance                   |
-| 6   | Bảo mật dữ liệu khách hàng được đảm bảo không?                                        | ✅ Có            | JWT authentication, data encryption    |
-| 7   | Giao diện người dùng thân thiện và dễ sử dụng không?                                  | ✅ Có            | Thiết kế responsive, intuitive         |
-| 8   | Hệ thống có khả năng backup và recovery không?                                        | ✅ Có            | Automated backup scheduled             |
+| STT | Tiêu chí kiểm tra                                                                     | Đã xác thực    | Ghi chú                                |
+| --- | ------------------------------------------------------------------------------------- | -------------- | -------------------------------------- |
+| 1   | Tất cả các tùy chọn trong ứng dụng có hiển thị kết quả chính xác không?               | ⏳ Chờ kiểm tra | Sẽ test khi hoàn thành development     |
+| 2   | Chức năng ứng dụng có giải quyết được vấn đề của người dùng và đáp ứng nhu cầu không? | ⏳ Chờ kiểm tra | Phù hợp với yêu cầu nghiệp vụ salon    |
+| 3   | Phần cứng và phần mềm đã được lựa chọn đúng chưa?                                     | ✅ Có           | Tech stack phù hợp với yêu cầu         |
+| 4   | Đảm bảo dữ liệu tuân thủ các ràng buộc                                                | ⏳ Chờ kiểm tra | Database constraints sẽ được thiết lập |
+| 5   | Hệ thống có thể xử lý đồng thời nhiều người dùng không?                               | ⏳ Chờ kiểm tra | Sẽ test performance                    |
+| 6   | Bảo mật dữ liệu khách hàng được đảm bảo không?                                        | ⏳ Chờ kiểm tra | JWT authentication, data encryption    |
+| 7   | Giao diện người dùng thân thiện và dễ sử dụng không?                                  | ⏳ Chờ kiểm tra | Thiết kế responsive, intuitive         |
+| 8   | Hệ thống có khả năng backup và recovery không?                                        | ⏳ Chờ kiểm tra | Automated backup sẽ được scheduled     |
 
 ### 2.2 Kiểm tra chi tiết từng module
 
 #### 2.2.1 Module Check-in
-| STT | Chức năng              | Trạng thái | Kết quả kiểm tra                     |
-| --- | ---------------------- | ---------- | ------------------------------------ |
-| 1   | Nhập số điện thoại     | ✅ Pass     | Validation số điện thoại Việt Nam    |
-| 2   | Nhận diện khách cũ/mới | ✅ Pass     | Tự động detect và hiển thị thông tin |
-| 3   | Đăng ký khách hàng mới | ✅ Pass     | Form validation hoạt động tốt        |
-| 4   | Cập nhật số lần visit  | ✅ Pass     | Counter tăng chính xác               |
-| 5   | Hiển thị điểm thưởng   | ✅ Pass     | Points calculation đúng              |
+| STT | Chức năng              | Trạng thái | Kết quả kiểm tra                    |
+| --- | ---------------------- | ---------- | ----------------------------------- |
+| 1   | Nhập số điện thoại     | ⏳ Chờ test | Sẽ test validation số điện thoại VN |
+| 2   | Nhận diện khách cũ/mới | ⏳ Chờ test | Sẽ test auto detect và hiển thị     |
+| 3   | Đăng ký khách hàng mới | ⏳ Chờ test | Sẽ test form validation             |
+| 4   | Cập nhật số lần visit  | ⏳ Chờ test | Sẽ test counter tăng chính xác      |
+| 5   | Hiển thị điểm thưởng   | ⏳ Chờ test | Sẽ test points calculation          |
 
 #### 2.2.2 Module Admin Dashboard
-| STT | Chức năng              | Trạng thái | Kết quả kiểm tra               |
-| --- | ---------------------- | ---------- | ------------------------------ |
-| 1   | Login/Logout admin     | ✅ Pass     | Authentication hoạt động       |
-| 2   | Hiển thị dashboard     | ✅ Pass     | Charts và statistics chính xác |
-| 3   | Quản lý khách hàng     | ✅ Pass     | CRUD operations hoàn chỉnh     |
-| 4   | Tạo campaign marketing | ✅ Pass     | Campaign builder functional    |
-| 5   | Xuất báo cáo           | ⏳ Testing  | Đang kiểm tra export functions |
+| STT | Chức năng              | Trạng thái | Kết quả kiểm tra             |
+| --- | ---------------------- | ---------- | ---------------------------- |
+| 1   | Login/Logout admin     | ⏳ Chờ test | Sẽ test authentication       |
+| 2   | Hiển thị dashboard     | ⏳ Chờ test | Sẽ test charts và statistics |
+| 3   | Quản lý khách hàng     | ⏳ Chờ test | Sẽ test CRUD operations      |
+| 4   | Tạo campaign marketing | ⏳ Chờ test | Sẽ test campaign builder     |
+| 5   | Xuất báo cáo           | ⏳ Chờ test | Sẽ test export functions     |
 
 #### 2.2.3 Module POS
-| STT | Chức năng          | Trạng thái | Kết quả kiểm tra              |
-| --- | ------------------ | ---------- | ----------------------------- |
-| 1   | Tính tiền dịch vụ  | ✅ Pass     | Calculation chính xác         |
-| 2   | Áp dụng discount   | ✅ Pass     | Discount rules hoạt động      |
-| 3   | Tính hoa hồng      | ✅ Pass     | Commission calculation đúng   |
-| 4   | In hóa đơn         | ⏳ Testing  | Đang test print functionality |
-| 5   | Cập nhật inventory | ⏳ Testing  | Stock management              |
+| STT | Chức năng          | Trạng thái | Kết quả kiểm tra               |
+| --- | ------------------ | ---------- | ------------------------------ |
+| 1   | Tính tiền dịch vụ  | ⏳ Chờ test | Sẽ test calculation            |
+| 2   | Áp dụng discount   | ⏳ Chờ test | Sẽ test discount rules         |
+| 3   | Tính hoa hồng      | ⏳ Chờ test | Sẽ test commission calculation |
+| 4   | In hóa đơn         | ⏳ Chờ test | Sẽ test print functionality    |
+| 5   | Cập nhật inventory | ⏳ Chờ test | Sẽ test stock management       |
 
 ## 3. DANH SÁCH KIỂM TRA NỘP BÀI (Submission Checklist)
 
@@ -116,16 +117,16 @@
 
 | STT | Tiêu chí                                                                        | Có  | Không | N/A | Ghi chú                        |
 | --- | ------------------------------------------------------------------------------- | --- | ----- | --- | ------------------------------ |
-| 1   | Người dùng có thể đăng nhập vào ứng dụng sau khi xác thực username và password? | ✅   |       |     | JWT authentication implemented |
-| 2   | Admin có thể chỉnh sửa thông tin của mình sau khi đăng nhập?                    | ✅   |       |     | Profile management working     |
-| 3   | Tất cả nội dung màn hình có bị lỗi chính tả không?                              | ✅   |       |     | Content đã được review         |
-| 4   | Ứng dụng có thân thiện với người dùng không?                                    | ✅   |       |     | UI/UX intuitive và responsive  |
-| 5   | Khách hàng có thể check-in thành công bằng số điện thoại?                       | ✅   |       |     | Core feature hoạt động tốt     |
-| 6   | Hệ thống có gửi thông báo SMS/Email tự động?                                    | ✅   |       |     | Integration với SMS gateway    |
-| 7   | Báo cáo và thống kê hiển thị chính xác?                                         | ✅   |       |     | Dashboard metrics accurate     |
-| 8   | Hệ thống có xử lý được multiple salons?                                         | ✅   |       |     | Multi-tenant architecture      |
-| 9   | Data backup có hoạt động đúng lịch?                                             | ✅   |       |     | Automated backup scheduled     |
-| 10  | Performance có đáp ứng được yêu cầu?                                            | ⏳   |       |     | Đang kiểm tra load testing     |
+| 1   | Người dùng có thể đăng nhập vào ứng dụng sau khi xác thực username và password? | ⏳   |       |     | Sẽ test khi hoàn thành backend |
+| 2   | Admin có thể chỉnh sửa thông tin của mình sau khi đăng nhập?                    | ⏳   |       |     | Sẽ test profile management     |
+| 3   | Tất cả nội dung màn hình có bị lỗi chính tả không?                              | ⏳   |       |     | Sẽ review content              |
+| 4   | Ứng dụng có thân thiện với người dùng không?                                    | ⏳   |       |     | Sẽ test UI/UX                  |
+| 5   | Khách hàng có thể check-in thành công bằng số điện thoại?                       | ⏳   |       |     | Core feature sẽ được test      |
+| 6   | Hệ thống có gửi thông báo SMS/Email tự động?                                    | ⏳   |       |     | Sẽ setup SMS gateway           |
+| 7   | Báo cáo và thống kê hiển thị chính xác?                                         | ⏳   |       |     | Sẽ test dashboard metrics      |
+| 8   | Hệ thống có xử lý được multiple salons?                                         | ⏳   |       |     | Multi-tenant architecture      |
+| 9   | Data backup có hoạt động đúng lịch?                                             | ⏳   |       |     | Sẽ setup automated backup      |
+| 10  | Performance có đáp ứng được yêu cầu?                                            | ⏳   |       |     | Sẽ test load testing           |
 
 ### 3.2 Checklist kỹ thuật
 
@@ -192,47 +193,47 @@
 - **Access**: Local development
 
 #### 4.2.2 Staging Environment  
-- **Timeline**: 04/07/2025
+- **Timeline**: 15/08/2025
 - **Purpose**: Demo với stakeholder
 - **Server**: Ubuntu VPS (DigitalOcean/Vultr)
 - **Database**: MySQL production instance
 - **Access**: Stakeholder và developer
 
 #### 4.2.3 Production Deployment Plan
-- **Timeline**: Sau khi stakeholder approve (post 05/07/2025)
+- **Timeline**: Sau khi stakeholder approve (post 18/08/2025)
 - **Method**: Docker deployment trên Ubuntu
 - **Database**: MySQL với backup strategy
 - **Domain**: Sẽ setup theo yêu cầu stakeholder
 - **SSL**: Let's Encrypt certificates
 
-### 4.3 Post-Launch Support Strategy
+### 4.3 Chiến lược hỗ trợ sau khi ra mắt sản phẩm
 
-#### 4.3.1 Key Metrics for MVP
-- System uptime (target: 95%+)
-- Response times (target: < 3s)
-- User check-in success rate
-- Stakeholder feedback score
-- Basic usage analytics
+#### 4.3.1 Các chỉ số quan trọng cho MVP
+- Thời gian hoạt động hệ thống (mục tiêu: 95%+)
+- Thời gian phản hồi (mục tiêu: < 3 giây)
+- Tỷ lệ thành công của việc check-in khách hàng
+- Điểm đánh giá từ stakeholder
+- Phân tích dữ liệu sử dụng cơ bản
 
-#### 4.3.2 Support Structure
-- **Developer**: Nguyễn Bá Tuấn Anh (full support)
-- **Stakeholder**: Business requirements và user feedback  
-- **End Users**: Support qua stakeholder
-- **Response Time**: 
-  - Critical issues: Same day
-  - Non-critical: Within 2-3 days
+#### 4.3.2 Cấu trúc hỗ trợ
+- **Lập trình viên**: Nguyễn Bá Tuấn Anh (hỗ trợ toàn diện)
+- **Stakeholder**: Yêu cầu kinh doanh và phản hồi từ người dùng
+- **Người dùng cuối**: Hỗ trợ thông qua stakeholder
+- **Thời gian phản hồi**: 
+  - Vấn đề nghiêm trọng: Trong ngày
+  - Vấn đề không nghiêm trọng: Trong vòng 2-3 ngày
 
-#### 4.3.3 Maintenance Plan
-- **Bug fixes**: Priority based trên stakeholder feedback
-- **Feature requests**: Roadmap discussion với stakeholder
-- **Infrastructure**: Ubuntu server maintenance, MySQL backups
-- **Updates**: Monthly releases với new features
+#### 4.3.3 Kế hoạch bảo trì
+- **Sửa lỗi**: Ưu tiên dựa trên phản hồi từ stakeholder
+- **Yêu cầu tính năng mới**: Thảo luận lộ trình với stakeholder
+- **Hạ tầng**: Bảo trì máy chủ Ubuntu, sao lưu MySQL
+- **Cập nhật**: Phát hành hàng tháng với tính năng mới
 
-#### 4.3.4 Business Model Implementation
-- **Phase 1**: MVP demo và stakeholder approval (07/2025)
-- **Phase 2**: First paying customer onboarding (08/2025) 
-- **Phase 3**: Subscription model setup (09/2025)
-- **Revenue sharing**: To be discussed với stakeholder
+#### 4.3.4 Triển khai mô hình kinh doanh
+- **Giai đoạn 1**: Demo MVP và phê duyệt từ stakeholder (08/2025)
+- **Giai đoạn 2**: Đưa khách hàng đầu tiên vào sử dụng có trả phí (09/2025) 
+- **Giai đoạn 3**: Thiết lập mô hình thuê bao (10/2025)
+- **Chia sẻ doanh thu**: Sẽ thảo luận với stakeholder
 
 ---
 
