@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Welcome Screen Generator</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f8fafc;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #8B5CF6, #C084FC);
+      border-radius: 12px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #8B5CF6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .color-option {
+      width: 100%;
+      height: 40px;
+      border: 2px solid #e5e7eb;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .color-option.selected {
+      border-color: #8B5CF6;
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+    }
+
+    .primary-button {
+      width: 100%;
+      background: linear-gradient(135deg, #8B5CF6, #A855F7);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+
+    .secondary-button {
+      width: 100%;
+      background: #f9fafb;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .preview {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    .preview-phone {
+      width: 120px;
+      height: 240px;
+      background: linear-gradient(180deg, #8B5CF6, #C084FC);
+      border-radius: 24px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-content {
+      position: absolute;
+      top: 20px;
+      left: 12px;
+      right: 12px;
+      bottom: 20px;
+      color: white;
+      font-size: 8px;
+    }
+
+    .status {
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+
+    .status.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .status.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">🏮</div>
+      <h1>Welcome Screen Generator</h1>
+      <p class="subtitle">Generate Elegant Nails Spa welcome screen</p>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Customization</div>
+
+      <div class="input-group">
+        <label for="brandName">Brand Name</label>
+        <input type="text" id="brandName" value="ELEGANT NAILS SPA">
+      </div>
+
+      <div class="input-group">
+        <label for="welcomeText">Welcome Message</label>
+        <input type="text" id="welcomeText" value="Welcome to Our Salon">
+      </div>
+
+      <div class="input-group">
+        <label for="countryCode">Country Code</label>
+        <select id="countryCode">
+          <option value="+84">🇻🇳 Vietnam (+84)</option>
+          <option value="+1">🇺🇸 USA (+1)</option>
+          <option value="+44">🇬🇧 UK (+44)</option>
+          <option value="+81">🇯🇵 Japan (+81)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Color Theme</div>
+      <div class="color-grid">
+        <div class="color-option selected" data-theme="purple"
+          style="background: linear-gradient(135deg, #8B5CF6, #C084FC);"></div>
+        <div class="color-option" data-theme="blue" style="background: linear-gradient(135deg, #3B82F6, #60A5FA);">
+        </div>
+        <div class="color-option" data-theme="pink" style="background: linear-gradient(135deg, #EC4899, #F472B6);">
+        </div>
+        <div class="color-option" data-theme="green" style="background: linear-gradient(135deg, #10B981, #34D399);">
+        </div>
+        <div class="color-option" data-theme="orange" style="background: linear-gradient(135deg, #F59E0B, #FBBF24);">
+        </div>
+        <div class="color-option" data-theme="indigo" style="background: linear-gradient(135deg, #6366F1, #818CF8);">
+        </div>
+      </div>
+    </div>
+
+    <div class="preview">
+      <div class="preview-phone">
+        <div class="preview-content">
+          <div style="text-align: center; margin-bottom: 8px;">🏮</div>
+          <div style="font-weight: bold; margin-bottom: 16px;">ELEGANT NAILS</div>
+          <div
+            style="background: rgba(255,255,255,0.9); color: #000; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+            <div style="margin-bottom: 4px;">🖌️</div>
+            <div>Welcome to Our Salon</div>
+          </div>
+          <div style="margin-bottom: 8px;">Enter phone number</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;">
+            <div
+              style="background: rgba(255,255,255,0.9); padding: 4px; border-radius: 50%; text-align: center; color: #000;">
+              1</div>
+            <div
+              style="background: rgba(255,255,255,0.9); padding: 4px; border-radius: 50%; text-align: center; color: #000;">
+              2</div>
+            <div
+              style="background: rgba(255,255,255,0.9); padding: 4px; border-radius: 50%; text-align: center; color: #000;">
+              3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="primary-button" onclick="generateScreen()">
+      Generate Welcome Screen
+    </button>
+
+    <button class="secondary-button" onclick="resetToDefaults()">
+      Reset to Defaults
+    </button>
+
+    <div id="status"></div>
+  </div>
+
+  <script>
+    let selectedTheme = 'purple';
+
+    // Color theme data
+    const themes = {
+      purple: {
+        primary: '#8B5CF6',
+        primaryLight: '#A855F7',
+        primaryLighter: '#C084FC'
+      },
+      blue: {
+        primary: '#3B82F6',
+        primaryLight: '#60A5FA',
+        primaryLighter: '#93C5FD'
+      },
+      pink: {
+        primary: '#EC4899',
+        primaryLight: '#F472B6',
+        primaryLighter: '#F9A8D4'
+      },
+      green: {
+        primary: '#10B981',
+        primaryLight: '#34D399',
+        primaryLighter: '#6EE7B7'
+      },
+      orange: {
+        primary: '#F59E0B',
+        primaryLight: '#FBBF24',
+        primaryLighter: '#FCD34D'
+      },
+      indigo: {
+        primary: '#6366F1',
+        primaryLight: '#818CF8',
+        primaryLighter: '#A5B4FC'
+      }
+    };
+
+    // Handle color theme selection
+    document.querySelectorAll('.color-option').forEach(option => {
+      option.addEventListener('click', function () {
+        document.querySelector('.color-option.selected').classList.remove('selected');
+        this.classList.add('selected');
+        selectedTheme = this.dataset.theme;
+        updatePreview();
+      });
+    });
+
+    // Update preview
+    function updatePreview() {
+      const theme = themes[selectedTheme];
+      const previewPhone = document.querySelector('.preview-phone');
+      previewPhone.style.background = `linear-gradient(180deg, ${theme.primary}, ${theme.primaryLighter})`;
+    }
+
+    // Generate screen function
+    function generateScreen() {
+      const brandName = document.getElementById('brandName').value;
+      const welcomeText = document.getElementById('welcomeText').value;
+      const countryCode = document.getElementById('countryCode').value;
+      const theme = themes[selectedTheme];
+
+      const config = {
+        brandName,
+        welcomeText,
+        countryCode,
+        theme
+      };
+
+      // Send message to plugin code
+      parent.postMessage({
+        pluginMessage: {
+          type: 'generate-screen',
+          config: config
+        }
+      }, '*');
+
+      showStatus('success', 'Generating welcome screen...');
+    }
+
+    // Reset to defaults
+    function resetToDefaults() {
+      document.getElementById('brandName').value = 'ELEGANT NAILS SPA';
+      document.getElementById('welcomeText').value = 'Welcome to Our Salon';
+      document.getElementById('countryCode').value = '+84';
+
+      document.querySelector('.color-option.selected').classList.remove('selected');
+      document.querySelector('[data-theme="purple"]').classList.add('selected');
+      selectedTheme = 'purple';
+      updatePreview();
+
+      showStatus('success', 'Reset to defaults');
+    }
+
+    // Show status message
+    function showStatus(type, message) {
+      const status = document.getElementById('status');
+      status.className = `status ${type}`;
+      status.textContent = message;
+
+      setTimeout(() => {
+        status.textContent = '';
+        status.className = '';
+      }, 3000);
+    }
+
+    // Listen for messages from plugin code
+    window.onmessage = (event) => {
+      const { type, message } = event.data.pluginMessage;
+
+      if (type === 'generation-complete') {
+        showStatus('success', 'Welcome screen created successfully!');
+      } else if (type === 'generation-error') {
+        showStatus('error', `Error: ${message}`);
+      }
+    };
+  </script>
+</body>
+
+</html>

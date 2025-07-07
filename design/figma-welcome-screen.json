@@ -1,0 +1,468 @@
+{
+  "figma_component_structure": {
+    "name": "Welcome Screen - Elegant Nails Spa",
+    "type": "Frame",
+    "width": 375,
+    "height": 812,
+    "background": {
+      "type": "linear_gradient",
+      "colors": ["#8B5CF6", "#A855F7", "#C084FC"],
+      "direction": "vertical"
+    },
+    "children": [
+      {
+        "name": "Header",
+        "type": "Frame",
+        "width": 327,
+        "height": 80,
+        "x": 24,
+        "y": 60,
+        "children": [
+          {
+            "name": "Logo Icon",
+            "type": "Icon",
+            "width": 32,
+            "height": 32,
+            "x": 147.5,
+            "y": 0,
+            "icon": "flower",
+            "color": "#FFFFFF"
+          },
+          {
+            "name": "Brand Name",
+            "type": "Text",
+            "width": 327,
+            "height": 32,
+            "x": 0,
+            "y": 48,
+            "text": "ELEGANT NAILS SPA",
+            "font": {
+              "family": "Inter",
+              "weight": "Bold",
+              "size": 24
+            },
+            "color": "#FFFFFF",
+            "align": "center",
+            "letterSpacing": 1
+          }
+        ]
+      },
+      {
+        "name": "Welcome Card",
+        "type": "Frame",
+        "width": 327,
+        "height": 160,
+        "x": 24,
+        "y": 180,
+        "background": "#FFFFFF",
+        "cornerRadius": 16,
+        "shadow": {
+          "color": "#000000",
+          "opacity": 0.15,
+          "blur": 12,
+          "x": 0,
+          "y": 4
+        },
+        "children": [
+          {
+            "name": "Nail Icon",
+            "type": "Icon",
+            "width": 64,
+            "height": 64,
+            "x": 131.5,
+            "y": 32,
+            "icon": "brush",
+            "color": "#8B5CF6"
+          },
+          {
+            "name": "Welcome Text",
+            "type": "Text",
+            "width": 267,
+            "height": 28,
+            "x": 30,
+            "y": 112,
+            "text": "Welcome to Our Salon",
+            "font": {
+              "family": "Inter",
+              "weight": "SemiBold",
+              "size": 20
+            },
+            "color": "#1F2937",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "name": "Input Section",
+        "type": "Frame",
+        "width": 327,
+        "height": 120,
+        "x": 24,
+        "y": 380,
+        "children": [
+          {
+            "name": "Input Label",
+            "type": "Text",
+            "width": 327,
+            "height": 24,
+            "x": 0,
+            "y": 0,
+            "text": "Please enter your phone number",
+            "font": {
+              "family": "Inter",
+              "weight": "Regular",
+              "size": 16
+            },
+            "color": "#FFFFFF",
+            "align": "center"
+          },
+          {
+            "name": "Phone Input",
+            "type": "Frame",
+            "width": 280,
+            "height": 56,
+            "x": 23.5,
+            "y": 40,
+            "background": "#FFFFFF",
+            "cornerRadius": 12,
+            "children": [
+              {
+                "name": "Country Code",
+                "type": "Text",
+                "width": 44,
+                "height": 24,
+                "x": 20,
+                "y": 16,
+                "text": "(+84)",
+                "font": {
+                  "family": "Inter",
+                  "weight": "Regular",
+                  "size": 18
+                },
+                "color": "#6B7280"
+              },
+              {
+                "name": "Phone Display",
+                "type": "Text",
+                "width": 140,
+                "height": 24,
+                "x": 72,
+                "y": 16,
+                "text": "___-___-____",
+                "font": {
+                  "family": "Inter",
+                  "weight": "Medium",
+                  "size": 18
+                },
+                "color": "#1F2937",
+                "letterSpacing": 1
+              }
+            ]
+          },
+          {
+            "name": "Privacy Note",
+            "type": "Frame",
+            "width": 200,
+            "height": 32,
+            "x": 63.5,
+            "y": 108,
+            "border": {
+              "color": "#FFFFFF",
+              "width": 1,
+              "style": "dashed"
+            },
+            "cornerRadius": 8,
+            "children": [
+              {
+                "name": "Privacy Text",
+                "type": "Text",
+                "width": 168,
+                "height": 20,
+                "x": 16,
+                "y": 6,
+                "text": "Your info will not be shared",
+                "font": {
+                  "family": "Inter",
+                  "weight": "Regular",
+                  "size": 14
+                },
+                "color": "#FFFFFF",
+                "opacity": 0.8,
+                "align": "center"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Number Pad",
+        "type": "Frame",
+        "width": 264,
+        "height": 320,
+        "x": 55.5,
+        "y": 540,
+        "children": [
+          {
+            "name": "Row 1",
+            "type": "Frame",
+            "width": 264,
+            "height": 72,
+            "x": 0,
+            "y": 0,
+            "children": [
+              {
+                "name": "Button 1",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "1" },
+                "x": 0,
+                "y": 0
+              },
+              {
+                "name": "Button 2",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "2" },
+                "x": 96,
+                "y": 0
+              },
+              {
+                "name": "Button 3",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "3" },
+                "x": 192,
+                "y": 0
+              }
+            ]
+          },
+          {
+            "name": "Row 2",
+            "type": "Frame",
+            "width": 264,
+            "height": 72,
+            "x": 0,
+            "y": 88,
+            "children": [
+              {
+                "name": "Button 4",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "4" },
+                "x": 0,
+                "y": 0
+              },
+              {
+                "name": "Button 5",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "5" },
+                "x": 96,
+                "y": 0
+              },
+              {
+                "name": "Button 6",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "6" },
+                "x": 192,
+                "y": 0
+              }
+            ]
+          },
+          {
+            "name": "Row 3",
+            "type": "Frame",
+            "width": 264,
+            "height": 72,
+            "x": 0,
+            "y": 176,
+            "children": [
+              {
+                "name": "Button 7",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "7" },
+                "x": 0,
+                "y": 0
+              },
+              {
+                "name": "Button 8",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "8" },
+                "x": 96,
+                "y": 0
+              },
+              {
+                "name": "Button 9",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "9" },
+                "x": 192,
+                "y": 0
+              }
+            ]
+          },
+          {
+            "name": "Row 4",
+            "type": "Frame",
+            "width": 264,
+            "height": 72,
+            "x": 0,
+            "y": 264,
+            "children": [
+              {
+                "name": "Backspace Button",
+                "type": "Frame",
+                "width": 72,
+                "height": 72,
+                "x": 0,
+                "y": 0,
+                "background": "#FFFFFF",
+                "cornerRadius": 36,
+                "shadow": {
+                  "color": "#000000",
+                  "opacity": 0.1,
+                  "blur": 4,
+                  "x": 0,
+                  "y": 2
+                },
+                "children": [
+                  {
+                    "name": "Backspace Icon",
+                    "type": "Icon",
+                    "width": 24,
+                    "height": 24,
+                    "x": 24,
+                    "y": 24,
+                    "icon": "backspace",
+                    "color": "#4B5563"
+                  }
+                ]
+              },
+              {
+                "name": "Button 0",
+                "type": "Component",
+                "component": "Number Button",
+                "props": { "number": "0" },
+                "x": 96,
+                "y": 0
+              },
+              {
+                "name": "Next Button",
+                "type": "Frame",
+                "width": 72,
+                "height": 72,
+                "x": 192,
+                "y": 0,
+                "background": "#FFFFFF",
+                "cornerRadius": 36,
+                "shadow": {
+                  "color": "#000000",
+                  "opacity": 0.1,
+                  "blur": 4,
+                  "x": 0,
+                  "y": 2
+                },
+                "children": [
+                  {
+                    "name": "Arrow Icon",
+                    "type": "Icon",
+                    "width": 24,
+                    "height": 24,
+                    "x": 24,
+                    "y": 24,
+                    "icon": "arrow-forward",
+                    "color": "#9CA3AF"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "components": {
+    "Number Button": {
+      "type": "Frame",
+      "width": 72,
+      "height": 72,
+      "background": "#FFFFFF",
+      "cornerRadius": 36,
+      "shadow": {
+        "color": "#000000",
+        "opacity": 0.1,
+        "blur": 4,
+        "x": 0,
+        "y": 2
+      },
+      "children": [
+        {
+          "name": "Number Text",
+          "type": "Text",
+          "width": 24,
+          "height": 32,
+          "x": 24,
+          "y": 20,
+          "text": "{number}",
+          "font": {
+            "family": "Inter",
+            "weight": "SemiBold",
+            "size": 24
+          },
+          "color": "#1F2937",
+          "align": "center"
+        }
+      ],
+      "props": ["number"]
+    }
+  },
+  "color_palette": {
+    "primary": "#8B5CF6",
+    "primary_light": "#A855F7",
+    "primary_lighter": "#C084FC",
+    "white": "#FFFFFF",
+    "text_primary": "#1F2937",
+    "text_secondary": "#6B7280",
+    "text_muted": "#9CA3AF",
+    "icon_color": "#4B5563"
+  },
+  "typography": {
+    "brand_name": {
+      "family": "Inter",
+      "weight": "Bold",
+      "size": 24,
+      "letterSpacing": 1
+    },
+    "welcome_title": {
+      "family": "Inter",
+      "weight": "SemiBold", 
+      "size": 20
+    },
+    "body": {
+      "family": "Inter",
+      "weight": "Regular",
+      "size": 16
+    },
+    "phone_display": {
+      "family": "Inter",
+      "weight": "Medium",
+      "size": 18,
+      "letterSpacing": 1
+    },
+    "number_button": {
+      "family": "Inter",
+      "weight": "SemiBold",
+      "size": 24
+    }
+  },
+  "spacing": {
+    "screen_padding": 24,
+    "component_gap": 40,
+    "card_padding": 32,
+    "input_padding": 20,
+    "button_gap": 16
+  }
+}
