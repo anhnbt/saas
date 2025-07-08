@@ -143,14 +143,17 @@ flowchart TD
     AUTO_MARKETING([Nhắc quay lại/Tự động chăm sóc])
     REVIEW_ASSIST([Đánh giá & Review Assistant])
 
-    KHACH_HANG -- "Check-in" --> CHECKIN
+    KHACH_HANG -- "Yêu cầu check-in" --> CHECKIN
+    CHECKIN -- "Kết quả check-in/thông báo" --> KHACH_HANG
+
     KHACH_HANG -- "Nhận ưu đãi" --> CAMPAIGN
-    KHACH_HANG -- "Nhận nhắc quay lại" --> AUTO_MARKETING
-    KHACH_HANG -- "Nhận/gửi review" --> REVIEW_ASSIST
-    AUTO_MARKETING -- "Gửi SMS/Email nhắc quay lại" --> KHACH_HANG
     CAMPAIGN -- "Gửi ưu đãi, mã khuyến mãi" --> KHACH_HANG
+
+    AUTO_MARKETING -- "Gửi SMS/Email nhắc quay lại" --> KHACH_HANG
+
     REVIEW_ASSIST -- "Gửi lời mời review" --> KHACH_HANG
-    REVIEW_ASSIST -- "Nhận phản hồi review" --> KHACH_HANG
+    KHACH_HANG -- "Gửi phản hồi review" --> REVIEW_ASSIST
+    REVIEW_ASSIST -- "Thông báo kết quả review" --> KHACH_HANG
 ```
 
 #### 2.2.2 DFD Level 1 - Chủ salon
@@ -162,13 +165,16 @@ flowchart TD
     REPORT([Báo cáo, thống kê & phân tích])
     STAFF([Quản lý nhân viên])
 
-    CHU_SALON -- "Quản lý khách" --> QUANLY
-    CHU_SALON -- "Tạo chiến dịch" --> CAMPAIGN
-    CHU_SALON -- "Xem báo cáo" --> REPORT
-    CHU_SALON -- "Quản lý nhân viên" --> STAFF
-    QUANLY -- "Trạng thái khách, nhóm khách" --> CHU_SALON
+    CHU_SALON -- "Yêu cầu quản lý khách" --> QUANLY
+    QUANLY -- "Kết quả quản lý khách, nhóm khách" --> CHU_SALON
+
+    CHU_SALON -- "Yêu cầu tạo chiến dịch" --> CAMPAIGN
     CAMPAIGN -- "Kết quả chiến dịch, ưu đãi" --> CHU_SALON
+
+    CHU_SALON -- "Yêu cầu xem báo cáo" --> REPORT
     REPORT -- "Báo cáo, biểu đồ" --> CHU_SALON
+
+    CHU_SALON -- "Yêu cầu quản lý nhân viên" --> STAFF
     STAFF -- "Thông tin nhân viên" --> CHU_SALON
 ```
 
@@ -179,9 +185,10 @@ flowchart TD
     POS([POS & Dịch vụ])
     STAFF([Lịch làm việc, hoa hồng])
 
-    NHAN_VIEN -- "Thực hiện POS, dịch vụ" --> POS
-    NHAN_VIEN -- "Xem lịch làm việc" --> STAFF
+    NHAN_VIEN -- "Yêu cầu thực hiện POS, dịch vụ" --> POS
     POS -- "Kết quả giao dịch, hoa hồng" --> NHAN_VIEN
+
+    NHAN_VIEN -- "Yêu cầu xem lịch làm việc" --> STAFF
     STAFF -- "Thông tin lịch làm việc, hoa hồng" --> NHAN_VIEN
 ```
 
