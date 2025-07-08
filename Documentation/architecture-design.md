@@ -131,71 +131,58 @@ flowchart LR
     HETHONG -- "Lịch làm việc, POS" --> NHAN_VIEN
 ```
 
-### 2.2 Data Flow Diagram Level 1 - Mermaid
 
+### 2.2 Data Flow Diagram Level 1 - Theo Actor (Mermaid)
+
+#### 2.2.1 DFD Level 1 - Khách hàng
 ```mermaid
 flowchart TD
-    KHACH_HANG1([Khách hàng])
-    CHU_SALON1([Chủ salon])
-    NHAN_VIEN1([Nhân viên])
+    KHACH_HANG([Khách hàng])
+    CHECKIN([Check-in])
+    CAMPAIGN([Nhận ưu đãi/Chiến dịch])
+    AUTO_MARKETING([Nhắc quay lại/Tự động chăm sóc])
+    REVIEW_ASSIST([Đánh giá & Review Assistant])
 
-    CHECKIN([1. Check-in])
-    QUANLY([2. Quản lý & phân loại khách hàng])
-    POS([3. POS & Dịch vụ])
-    CAMPAIGN([4. Chiến dịch & Khuyến mãi])
-    AUTO_MARKETING([5. Tự động chăm sóc & marketing])
-    REVIEW_ASSIST([6. Quản lý đánh giá & Review Assistant])
-    REPORT([7. Báo cáo, thống kê & phân tích])
+    KHACH_HANG -- "Check-in" --> CHECKIN
+    KHACH_HANG -- "Nhận ưu đãi" --> CAMPAIGN
+    KHACH_HANG -- "Nhận nhắc quay lại" --> AUTO_MARKETING
+    KHACH_HANG -- "Nhận/gửi review" --> REVIEW_ASSIST
+    AUTO_MARKETING -- "Gửi SMS/Email nhắc quay lại" --> KHACH_HANG
+    CAMPAIGN -- "Gửi ưu đãi, mã khuyến mãi" --> KHACH_HANG
+    REVIEW_ASSIST -- "Gửi lời mời review" --> KHACH_HANG
+    REVIEW_ASSIST -- "Nhận phản hồi review" --> KHACH_HANG
+```
 
-    CUSTOMER_DB[(Kho dữ liệu khách hàng)]
-    TRANSACTION_DB[(Kho dữ liệu giao dịch)]
-    REVIEW_DB[(Kho dữ liệu đánh giá)]
-    STAFF_DB[(Kho dữ liệu nhân viên)]
-    CAMPAIGN_DB[(Kho dữ liệu chiến dịch)]
+#### 2.2.2 DFD Level 1 - Chủ salon
+```mermaid
+flowchart TD
+    CHU_SALON([Chủ salon])
+    QUANLY([Quản lý & phân loại khách hàng])
+    CAMPAIGN([Tạo chiến dịch/Khuyến mãi])
+    REPORT([Báo cáo, thống kê & phân tích])
+    STAFF([Quản lý nhân viên])
 
-    %% Request từ đối tượng đến hệ thống
-    KHACH_HANG1 -- "Check-in, xem điểm, nhận ưu đãi" --> CHECKIN
-    CHU_SALON1 -- "Quản lý khách, tạo chiến dịch, xem báo cáo" --> QUANLY
-    NHAN_VIEN1 -- "Thực hiện POS, cập nhật dịch vụ" --> POS
+    CHU_SALON -- "Quản lý khách" --> QUANLY
+    CHU_SALON -- "Tạo chiến dịch" --> CAMPAIGN
+    CHU_SALON -- "Xem báo cáo" --> REPORT
+    CHU_SALON -- "Quản lý nhân viên" --> STAFF
+    QUANLY -- "Trạng thái khách, nhóm khách" --> CHU_SALON
+    CAMPAIGN -- "Kết quả chiến dịch, ưu đãi" --> CHU_SALON
+    REPORT -- "Báo cáo, biểu đồ" --> CHU_SALON
+    STAFF -- "Thông tin nhân viên" --> CHU_SALON
+```
 
-    %% Response từ hệ thống về đối tượng
-    CHECKIN -- "Kết quả check-in, thông báo, điểm thưởng" --> KHACH_HANG1
-    QUANLY -- "Thông tin khách, trạng thái chiến dịch" --> CHU_SALON1
-    POS -- "Kết quả giao dịch, hoa hồng" --> NHAN_VIEN1
+#### 2.2.3 DFD Level 1 - Nhân viên
+```mermaid
+flowchart TD
+    NHAN_VIEN([Nhân viên])
+    POS([POS & Dịch vụ])
+    STAFF([Lịch làm việc, hoa hồng])
 
-    %% Luồng nội bộ hệ thống
-    CHECKIN -- "Tạo chiến dịch tự động" --> CAMPAIGN
-    CHECKIN -- "Cập nhật điểm, lịch sử, phân loại khách" --> CUSTOMER_DB
-    CHECKIN -- "Tạo giao dịch mới" --> TRANSACTION_DB
-    CHECKIN -- "Kích hoạt gửi lời mời review (delay)" --> REVIEW_ASSIST
-
-    QUANLY -- "Quản lý khách hàng" --> CUSTOMER_DB
-    QUANLY -- "Quản lý nhân viên" --> STAFF_DB
-    QUANLY -- "Quản lý chiến dịch" --> CAMPAIGN_DB
-
-    POS -- "Tạo giao dịch, cập nhật doanh thu" --> TRANSACTION_DB
-    POS -- "Cập nhật khách hàng" --> CUSTOMER_DB
-    POS -- "Cập nhật nhân viên" --> STAFF_DB
-
-    CAMPAIGN -- "Lưu lịch sử chiến dịch" --> CAMPAIGN_DB
-    CAMPAIGN -- "Cập nhật khách hưởng ưu đãi" --> CUSTOMER_DB
-    CAMPAIGN -- "Tạo chiến dịch marketing dịp đặc biệt (Noel, kỷ niệm, v.v.)" --> AUTO_MARKETING
-
-    AUTO_MARKETING -- "Nhắc khách quay lại (30/60/90 ngày chưa check-in, kèm mã KM)" --> KHACH_HANG1
-    AUTO_MARKETING -- "Gửi SMS/Email chiến dịch sự kiện" --> KHACH_HANG1
-    AUTO_MARKETING -- "Lưu lịch sử gửi, cập nhật trạng thái chăm sóc" --> CUSTOMER_DB
-
-    REVIEW_ASSIST -- "Gửi lời mời review (SMS/Email)" --> KHACH_HANG1
-    KHACH_HANG1 -- "Phản hồi review" --> REVIEW_ASSIST
-    REVIEW_ASSIST -- "Review tốt: gửi Google" --> REVIEW_DB
-    REVIEW_ASSIST -- "Review xấu: lưu nội bộ" --> REVIEW_DB
-
-    REPORT -- "Truy vấn khách hàng, phân loại nhóm khách" --> CUSTOMER_DB
-    REPORT -- "Thống kê doanh thu, dịch vụ, nhân viên" --> TRANSACTION_DB
-    REPORT -- "Truy vấn đánh giá" --> REVIEW_DB
-    REPORT -- "Truy vấn nhân viên" --> STAFF_DB
-    REPORT -- "Truy vấn chiến dịch" --> CAMPAIGN_DB
-    REPORT -- "Biểu đồ cột tuần/tháng: lượng khách, doanh thu, dịch vụ" --> KHACH_HANG1
+    NHAN_VIEN -- "Thực hiện POS, dịch vụ" --> POS
+    NHAN_VIEN -- "Xem lịch làm việc" --> STAFF
+    POS -- "Kết quả giao dịch, hoa hồng" --> NHAN_VIEN
+    STAFF -- "Thông tin lịch làm việc, hoa hồng" --> NHAN_VIEN
 ```
 
 - Đã bổ sung process "Tự động marketing & nhắc khách quay lại": hệ thống tự động gửi SMS/Email sau 30/60/90 ngày nếu khách chưa quay lại, nội dung như "We miss you! Come back to us and get 10% on your Visit".
