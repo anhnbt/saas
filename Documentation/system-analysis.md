@@ -124,8 +124,6 @@ Xây dựng một nền tảng SaaS toàn diện cho salon nails với:
 
 ## 6. ĐẶC TẢ YÊU CẦU NGƯỜI DÙNG (Users Requirements Specification)
 
-
-
 ### 6.1 Người dùng của hệ thống (Users of the System)
 
 | No | Users                        | Permission                                                                                       |
@@ -134,6 +132,25 @@ Xây dựng một nền tảng SaaS toàn diện cho salon nails với:
 | 2  | Chủ salon (Owner/Manager)     | Quản lý salon, nhân viên, xem báo cáo, cấu hình POS, quản lý chương trình khách hàng thân thiết  |
 | 3  | Nhân viên salon (Staff)       | Thực hiện dịch vụ, check-in khách, tạo đơn hàng, xem lịch làm việc, xem doanh số cá nhân         |
 | 4  | Khách hàng (Customer)        | Check-in, xem điểm thưởng, nhận thông báo, gửi đánh giá, xem lịch sử dịch vụ cá nhân             |
+
+#### Bảng phân quyền chi tiết
+
+| Chức năng / Vai trò                | System Admin | Salon Owner | Staff | Customer |
+|------------------------------------|:------------:|:-----------:|:-----:|:--------:|
+| Quản lý salon                      |      x       |      x      |       |          |
+| Quản lý nhân viên                  |      x       |      x      |       |          |
+| Quản lý khách hàng                 |      x       |      x      |   x   |          |
+| Quản lý sản phẩm/dịch vụ           |      x       |      x      |   x   |          |
+| Quản lý đơn hàng                   |      x       |      x      |   x   |          |
+| Quản lý chương trình khuyến mãi    |      x       |      x      |       |          |
+| Xem báo cáo                        |      x       |      x      |   x   |          |
+| Cấu hình hệ thống                  |      x       |      x      |       |          |
+| Check-in                           |              |             |   x   |    x     |
+| Đánh giá, phản hồi                 |              |             |       |    x     |
+| Nhận thông báo                     |              |             |   x   |    x     |
+| Đổi mật khẩu, cập nhật thông tin    |      x       |      x      |   x   |    x     |
+| Quản lý phân quyền                 |      x       |             |       |          |
+| Quản lý hệ thống SaaS (toàn cục)   |      x       |             |       |          |
 
 #### Mô tả chi tiết từng đối tượng:
 
