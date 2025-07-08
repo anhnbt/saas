@@ -139,12 +139,13 @@ flowchart TD
     CHU_SALON1([Chủ salon])
     NHAN_VIEN1([Nhân viên])
 
-    CHECKIN([1. Check-in System])
-
-    QUANLY([2. Quản lý khách hàng])
-    POS([3. Hệ thống POS])
-    CAMPAIGN([4. Hệ thống chiến dịch & khuyến mãi])
-    REPORT([5. Báo cáo & phân tích])
+    CHECKIN([1. Check-in])
+    QUANLY([2. Quản lý & phân loại khách hàng])
+    POS([3. POS & Dịch vụ])
+    CAMPAIGN([4. Chiến dịch & Khuyến mãi])
+    AUTO_MARKETING([5. Tự động chăm sóc & marketing])
+    REVIEW_ASSIST([6. Quản lý đánh giá & Review Assistant])
+    REPORT([7. Báo cáo, thống kê & phân tích])
 
     CUSTOMER_DB[(Kho dữ liệu khách hàng)]
     TRANSACTION_DB[(Kho dữ liệu giao dịch)]
@@ -153,7 +154,7 @@ flowchart TD
     CAMPAIGN_DB[(Kho dữ liệu chiến dịch)]
 
     %% Request từ đối tượng đến hệ thống
-    KHACH_HANG1 -- "Yêu cầu check-in, xem điểm, nhận ưu đãi" --> CHECKIN
+    KHACH_HANG1 -- "Check-in, xem điểm, nhận ưu đãi" --> CHECKIN
     CHU_SALON1 -- "Quản lý khách, tạo chiến dịch, xem báo cáo" --> QUANLY
     NHAN_VIEN1 -- "Thực hiện POS, cập nhật dịch vụ" --> POS
 
@@ -164,9 +165,9 @@ flowchart TD
 
     %% Luồng nội bộ hệ thống
     CHECKIN -- "Tạo chiến dịch tự động" --> CAMPAIGN
-    CHECKIN -- "Cập nhật điểm, lịch sử" --> CUSTOMER_DB
+    CHECKIN -- "Cập nhật điểm, lịch sử, phân loại khách" --> CUSTOMER_DB
     CHECKIN -- "Tạo giao dịch mới" --> TRANSACTION_DB
-    CHECKIN -- "Ghi nhận đánh giá" --> REVIEW_DB
+    CHECKIN -- "Kích hoạt gửi lời mời review (delay)" --> REVIEW_ASSIST
 
     QUANLY -- "Quản lý khách hàng" --> CUSTOMER_DB
     QUANLY -- "Quản lý nhân viên" --> STAFF_DB
@@ -178,25 +179,59 @@ flowchart TD
 
     CAMPAIGN -- "Lưu lịch sử chiến dịch" --> CAMPAIGN_DB
     CAMPAIGN -- "Cập nhật khách hưởng ưu đãi" --> CUSTOMER_DB
+    CAMPAIGN -- "Tạo chiến dịch marketing dịp đặc biệt (Noel, kỷ niệm, v.v.)" --> AUTO_MARKETING
 
-    REPORT -- "Truy vấn khách hàng" --> CUSTOMER_DB
-    REPORT -- "Truy vấn giao dịch" --> TRANSACTION_DB
+    AUTO_MARKETING -- "Nhắc khách quay lại (30/60/90 ngày chưa check-in, kèm mã KM)" --> KHACH_HANG1
+    AUTO_MARKETING -- "Gửi SMS/Email chiến dịch sự kiện" --> KHACH_HANG1
+    AUTO_MARKETING -- "Lưu lịch sử gửi, cập nhật trạng thái chăm sóc" --> CUSTOMER_DB
+
+    REVIEW_ASSIST -- "Gửi lời mời review (SMS/Email)" --> KHACH_HANG1
+    KHACH_HANG1 -- "Phản hồi review" --> REVIEW_ASSIST
+    REVIEW_ASSIST -- "Review tốt: gửi Google" --> REVIEW_DB
+    REVIEW_ASSIST -- "Review xấu: lưu nội bộ" --> REVIEW_DB
+
+    REPORT -- "Truy vấn khách hàng, phân loại nhóm khách" --> CUSTOMER_DB
+    REPORT -- "Thống kê doanh thu, dịch vụ, nhân viên" --> TRANSACTION_DB
     REPORT -- "Truy vấn đánh giá" --> REVIEW_DB
     REPORT -- "Truy vấn nhân viên" --> STAFF_DB
     REPORT -- "Truy vấn chiến dịch" --> CAMPAIGN_DB
+    REPORT -- "Biểu đồ cột tuần/tháng: lượng khách, doanh thu, dịch vụ" --> KHACH_HANG1
 ```
 
-**Mô tả:**
-- Đã thay thế "Database System" bằng các data store thực tế: Customer, Transaction, Review, Staff, Campaign.
-- "Report System" đổi thành "Reporting & Analytics" để phản ánh đúng chức năng.
-- Các process kết nối trực tiếp với data store phù hợp.
-- Luồng request/response và xử lý nội bộ đều rõ ràng, đúng chuẩn DFD.
-
-**Mô tả:**
+- Đã bổ sung process "Tự động marketing & nhắc khách quay lại": hệ thống tự động gửi SMS/Email sau 30/60/90 ngày nếu khách chưa quay lại, nội dung như "We miss you! Come back to us and get 10% on your Visit".
+- Đã bổ sung process "Quản lý đánh giá & Review Assistant": gửi lời mời review tự động (delay sau khi check-in), nhận phản hồi review từ khách, phân biệt review tốt (gửi Google) và review xấu (lưu nội bộ, không public), không cho phép thuê người viết review.
+- Các luồng dữ liệu thể hiện rõ automation marketing, review assistant, và các nghiệp vụ thực tế.
 - Các mũi tên từ vai trò (khách hàng, chủ salon, nhân viên) đến hệ thống thể hiện request (yêu cầu, thao tác).
 - Các mũi tên ngược lại thể hiện response (kết quả, thông tin trả về).
-- Các mũi tên giữa các module hệ thống thể hiện luồng xử lý nội bộ.
-- "Campaign & Promotion System" thay cho "Marketing Campaign" để đồng nhất thuật ngữ.
+- Các mũi tên giữa các module hệ thống thể hiện luồng xử lý nội bộ, đúng chuẩn DFD.
+- Đã mở rộng process "Quản lý & phân loại khách hàng": hệ thống tự động phân loại nhóm khách (mới, thân thiết, VIP, vắng lâu ngày).
+- "Tự động chăm sóc & marketing": gửi SMS/email nhắc khách quay lại sau 60 ngày chưa check-in (kèm mã khuyến mãi), tạo chiến dịch marketing dịp đặc biệt (Noel, kỷ niệm, v.v.) gửi hàng loạt.
+- "Báo cáo, thống kê & phân tích": thống kê doanh thu, dịch vụ, nhân viên; biểu đồ cột tuần/tháng về lượng khách, doanh thu, dịch vụ giúp chủ tiệm phân tích xu hướng.
+- Các luồng dữ liệu thể hiện rõ automation marketing, review assistant, phân loại khách, và các nghiệp vụ thực tế.
+- Các mũi tên từ vai trò (khách hàng, chủ salon, nhân viên) đến hệ thống thể hiện request (yêu cầu, thao tác).
+- Các mũi tên ngược lại thể hiện response (kết quả, thông tin trả về).
+- Các mũi tên giữa các module hệ thống thể hiện luồng xử lý nội bộ, đúng chuẩn DFD.
+**Mô tả bổ sung:**
+- Đã mở rộng process "Quản lý & phân loại khách hàng": hệ thống tự động phân loại nhóm khách (mới, thân thiết, VIP, vắng lâu ngày).
+- "Tự động chăm sóc & marketing": gửi SMS/email nhắc khách quay lại sau 30/60/90 ngày chưa check-in (kèm mã khuyến mãi), tạo chiến dịch marketing dịp đặc biệt (Noel, kỷ niệm, v.v.) gửi hàng loạt.
+- "Báo cáo, thống kê & phân tích": thống kê doanh thu, dịch vụ, nhân viên; biểu đồ cột tuần/tháng về lượng khách, doanh thu, dịch vụ giúp chủ tiệm phân tích xu hướng.
+- Các luồng dữ liệu thể hiện rõ automation marketing, review assistant, phân loại khách, và các nghiệp vụ thực tế.
+- Các mũi tên từ vai trò (khách hàng, chủ salon, nhân viên) đến hệ thống thể hiện request (yêu cầu, thao tác).
+- Các mũi tên ngược lại thể hiện response (kết quả, thông tin trả về).
+- Các mũi tên giữa các module hệ thống thể hiện luồng xử lý nội bộ, đúng chuẩn DFD.
+- Đã mở rộng process "Quản lý & phân loại khách hàng": hệ thống tự động phân loại nhóm khách (mới, thân thiết, VIP, vắng lâu ngày).
+- "Tự động chăm sóc & marketing": gửi SMS/email nhắc khách quay lại sau 60 ngày chưa check-in (kèm mã khuyến mãi), tạo chiến dịch marketing dịp đặc biệt (Noel, kỷ niệm, v.v.) gửi hàng loạt.
+- "Báo cáo, thống kê & phân tích": thống kê doanh thu, dịch vụ, nhân viên; biểu đồ cột tuần/tháng về lượng khách, doanh thu, dịch vụ giúp chủ tiệm phân tích xu hướng.
+- Các luồng dữ liệu thể hiện rõ automation marketing, review assistant, phân loại khách, và các nghiệp vụ thực tế.
+- Các mũi tên từ vai trò (khách hàng, chủ salon, nhân viên) đến hệ thống thể hiện request (yêu cầu, thao tác).
+- Các mũi tên ngược lại thể hiện response (kết quả, thông tin trả về).
+- Các mũi tên giữa các module hệ thống thể hiện luồng xử lý nội bộ, đúng chuẩn DFD.
+- Đã bổ sung process "Tự động marketing & nhắc khách quay lại": hệ thống tự động gửi SMS/Email sau 30/60/90 ngày nếu khách chưa quay lại, nội dung như "We miss you! Come back to us and get 10% on your Visit".
+- Đã bổ sung process "Quản lý đánh giá & Review Assistant": gửi lời mời review tự động (delay sau khi check-in), nhận phản hồi review từ khách, phân biệt review tốt (gửi Google) và review xấu (lưu nội bộ, không public), không cho phép thuê người viết review.
+- Các luồng dữ liệu thể hiện rõ automation marketing, review assistant, và các nghiệp vụ thực tế.
+- Các mũi tên từ vai trò (khách hàng, chủ salon, nhân viên) đến hệ thống thể hiện request (yêu cầu, thao tác).
+- Các mũi tên ngược lại thể hiện response (kết quả, thông tin trả về).
+- Các mũi tên giữa các module hệ thống thể hiện luồng xử lý nội bộ, đúng chuẩn DFD.
 
 ### 2.3 Data Flow Diagram Level 2 - Process 1: Check-in System (Mermaid)
 
