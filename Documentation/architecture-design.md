@@ -248,107 +248,44 @@ flowchart TD
 
 **Mô tả các process và entity giữ nguyên như cũ, chỉ thay thế phần sơ đồ bằng Mermaid cho trực quan, hiện đại và dễ chỉnh sửa.**
 
+
 ## 3. SƠ ĐỒ THỰC THỂ LIÊN KẾT (Entity Relationship Diagram)
 
-### 3.1 Main Entities
 
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│     SALON       │     │    CUSTOMER     │     │     STAFF       │
-├─────────────────┤     ├─────────────────┤     ├─────────────────┤
-│ + salon_id (PK) │     │ + customer_id   │     │ + staff_id (PK) │
-│ + name          │     │ + phone_number  │     │ + salon_id (FK) │
-│ + address       │     │ + full_name     │     │ + username      │
-│ + phone         │     │ + email         │     │ + password      │
-│ + email         │     │ + birthday      │     │ + full_name     │
-│ + owner_name    │     │ + gender        │     │ + role          │
-│ + created_at    │     │ + customer_type │     │ + commission_rate│
-│ + updated_at    │     │ + total_visits  │     │ + created_at    │
-└─────────────────┘     │ + total_spent   │     │ + updated_at    │
-                        │ + loyalty_points│     └─────────────────┘
-                        │ + last_visit    │
-                        │ + created_at    │
-                        │ + updated_at    │
-                        └─────────────────┘
-```
+```mermaid
+erDiagram
+    SALON ||--o{ CUSTOMER : ""
+    SALON ||--o{ STAFF : ""
+    SALON ||--o{ SERVICE : ""
+    SALON ||--o{ PRODUCT : ""
+    SALON ||--o{ CAMPAIGN : ""
 
-### 3.2 Relationship Diagram
+    CUSTOMER ||--o{ VISIT : ""
+    CUSTOMER ||--o{ ORDER : ""
+    CUSTOMER ||--o{ APPOINTMENT : ""
+    CUSTOMER ||--o{ REVIEW : ""
+    CUSTOMER ||--o{ NOTIFICATION : ""
 
-```
-     SALON                    CUSTOMER
-┌─────────────┐            ┌─────────────┐
-│ salon_id    │            │ customer_id │
-│ name        │            │ phone       │
-│ address     │            │ full_name   │
-│ phone       │            │ email       │
-│ email       │            │ birthday    │
-│ owner_name  │            │ type        │
-└─────────────┘            └─────────────┘
-       │                          │
-       │ 1                        │
-       │                          │ M
-       │                          │
-       ▼                          ▼
-┌─────────────┐            ┌─────────────┐
-│   STAFF     │            │   VISIT     │
-│ staff_id    │            │ visit_id    │
-│ salon_id    │            │ customer_id │
-│ username    │            │ salon_id    │
-│ full_name   │            │ staff_id    │
-│ role        │            │ visit_date  │
-│ commission  │            │ services    │
-└─────────────┘            │ total_amount│
-       │                   │ status      │
-       │ 1                 └─────────────┘
-       │                          │
-       │ M                        │ M
-       │                          │
-       ▼                          ▼
-┌─────────────┐            ┌─────────────┐
-│   ORDER     │            │  SERVICE    │
-│ order_id    │            │ service_id  │
-│ customer_id │            │ salon_id    │
-│ staff_id    │            │ name        │
-│ total_amount│            │ price       │
-│ commission  │            │ duration    │
-│ created_at  │            │ description │
-└─────────────┘            └─────────────┘
-       │                          │
-       │ 1                        │
-       │                          │ M
-       │ M                        │
-       ▼                          ▼
-┌─────────────┐            ┌─────────────┐
-│ORDER_DETAIL │            │   PRODUCT   │
-│ detail_id   │            │ product_id  │
-│ order_id    │            │ salon_id    │
-│ service_id  │            │ name        │
-│ product_id  │            │ price       │
-│ quantity    │            │ stock       │
-│ unit_price  │            │ category    │
-│ total_price │            └─────────────┘
-└─────────────┘
+    STAFF ||--o{ VISIT : ""
+    STAFF ||--o{ ORDER : ""
+    STAFF ||--o{ APPOINTMENT : ""
+
+    CAMPAIGN ||--o{ APPOINTMENT : ""
+
+    ORDER ||--o{ SERVICE : ""
+    ORDER ||--o{ PRODUCT : ""
+
+    REVIEW ||--|| CUSTOMER : ""
+    REVIEW ||--|| STAFF : ""
+    REVIEW ||--|| SALON : ""
+    REVIEW ||--|| VISIT : ""
+
+    %% Chỉ thể hiện các thực thể và quan hệ chính, lược bỏ chi tiết ORDER_DETAIL để đơn giản hóa khái niệm.
 ```
 
-### 3.3 Additional Entities
+**Lưu ý:** Sơ đồ ERD này ở mức khái niệm, chỉ thể hiện các thực thể và mối quan hệ chính, lược bỏ các bảng chi tiết/phụ như ORDER_DETAIL để dễ nhìn và tập trung vào nghiệp vụ lõi.
 
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│    CAMPAIGN     │     │   APPOINTMENT   │     │   NOTIFICATION  │
-├─────────────────┤     ├─────────────────┤     ├─────────────────┤
-│ + campaign_id   │     │ + appointment_id│     │ + notification_id│
-│ + salon_id      │     │ + customer_id   │     │ + customer_id   │
-│ + name          │     │ + staff_id      │     │ + type          │
-│ + type          │     │ + salon_id      │     │ + title         │
-│ + target_group  │     │ + service_id    │     │ + content       │
-│ + discount_type │     │ + appointment_dt│     │ + status        │
-│ + discount_value│     │ + duration      │     │ + sent_at       │
-│ + start_date    │     │ + status        │     │ + created_at    │
-│ + end_date      │     │ + notes         │     └─────────────────┘
-│ + status        │     │ + created_at    │
-│ + created_at    │     │ + updated_at    │
-└─────────────────┘     └─────────────────┘
-```
+**Lưu ý:** Đã bổ sung entity REVIEW (đánh giá) đúng như các process DFD, đảm bảo đầy đủ các thực thể chính và mối quan hệ nghiệp vụ.
 
 ---
 
