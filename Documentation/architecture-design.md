@@ -252,36 +252,50 @@ flowchart TD
 ## 3. SƠ ĐỒ THỰC THỂ LIÊN KẾT (Entity Relationship Diagram)
 
 
+
 ```mermaid
 erDiagram
-    SALON ||--o{ CUSTOMER : ""
-    SALON ||--o{ STAFF : ""
-    SALON ||--o{ SERVICE : ""
-    SALON ||--o{ PRODUCT : ""
-    SALON ||--o{ CAMPAIGN : ""
+    SALON ||--o{ CUSTOMER : "1:N"
+    SALON ||--o{ STAFF : "1:N"
+    SALON ||--o{ SERVICE : "1:N"
+    SALON ||--o{ PRODUCT : "1:N"
+    SALON ||--o{ CAMPAIGN : "1:N"
 
-    CUSTOMER ||--o{ VISIT : ""
-    CUSTOMER ||--o{ ORDER : ""
-    CUSTOMER ||--o{ APPOINTMENT : ""
-    CUSTOMER ||--o{ REVIEW : ""
-    CUSTOMER ||--o{ NOTIFICATION : ""
+    CUSTOMER ||--o{ VISIT : "1:N"
+    CUSTOMER ||--o{ ORDER : "1:N"
+    CUSTOMER ||--o{ APPOINTMENT : "1:N"
+    CUSTOMER ||--o{ REVIEW : "1:N"
+    CUSTOMER ||--o{ NOTIFICATION : "1:N"
 
-    STAFF ||--o{ VISIT : ""
-    STAFF ||--o{ ORDER : ""
-    STAFF ||--o{ APPOINTMENT : ""
+    STAFF ||--o{ VISIT : "1:N"
+    STAFF ||--o{ ORDER : "1:N"
+    STAFF ||--o{ APPOINTMENT : "1:N"
 
-    CAMPAIGN ||--o{ APPOINTMENT : ""
+    CAMPAIGN ||--o{ APPOINTMENT : "1:N"
 
-    ORDER ||--o{ SERVICE : ""
-    ORDER ||--o{ PRODUCT : ""
+    %% Các mối quan hệ nhiều-nhiều (N:M) không thể hiện trực tiếp bằng Mermaid erDiagram, cần note ở dưới.
 
-    REVIEW ||--|| CUSTOMER : ""
-    REVIEW ||--|| STAFF : ""
-    REVIEW ||--|| SALON : ""
-    REVIEW ||--|| VISIT : ""
+    %% Ví dụ: Một ORDER có thể chứa nhiều SERVICE/PRODUCT và ngược lại (N:M), thực tế sẽ cần bảng phụ.
 
-    %% Chỉ thể hiện các thực thể và quan hệ chính, lược bỏ chi tiết ORDER_DETAIL để đơn giản hóa khái niệm.
+    %% REVIEW liên kết với CUSTOMER, STAFF, SALON, VISIT là 1:N (một khách có nhiều review, một staff có nhiều review...)
 ```
+
+**Ghi chú về quan hệ:**
+
+- 1:N (một-nhiều):
+    - Một SALON có nhiều CUSTOMER, STAFF, SERVICE, PRODUCT, CAMPAIGN
+    - Một CUSTOMER có nhiều VISIT, ORDER, APPOINTMENT, REVIEW, NOTIFICATION
+    - Một STAFF có nhiều VISIT, ORDER, APPOINTMENT
+    - Một CAMPAIGN có nhiều APPOINTMENT
+    - Một VISIT/ORDER/STAFF/SALON/CUSTOMER có nhiều REVIEW
+
+- N:M (nhiều-nhiều):
+    - ORDER và SERVICE/PRODUCT là N:M (một đơn hàng có nhiều dịch vụ/sản phẩm, một dịch vụ/sản phẩm có thể thuộc nhiều đơn hàng). Thực tế sẽ cần bảng phụ (ORDER_DETAIL), nhưng ở mức khái niệm chỉ cần note.
+
+- 1:1 (một-một):
+    - Không có mối quan hệ 1:1 rõ ràng trong nghiệp vụ chính của hệ thống này.
+
+**Lưu ý:** Mermaid erDiagram chỉ thể hiện tốt 1:N, các quan hệ N:M nên ghi chú rõ ở dưới sơ đồ.
 
 **Lưu ý:** Sơ đồ ERD này ở mức khái niệm, chỉ thể hiện các thực thể và mối quan hệ chính, lược bỏ các bảng chi tiết/phụ như ORDER_DETAIL để dễ nhìn và tập trung vào nghiệp vụ lõi.
 
