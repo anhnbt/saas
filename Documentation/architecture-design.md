@@ -280,11 +280,14 @@ erDiagram
     VISIT ||--o{ REVIEW : "1:N"
 
     %% Loyalty program
-    LOYALTY_PROGRAM ||--o{ CUSTOMER : "N:M" %% Một chương trình có nhiều khách, một khách có thể tham gia nhiều chương trình
+    LOYALTY_PROGRAM ||--o{ CUSTOMER : "N:M"
 
     %% Promotion
-    CAMPAIGN ||--o{ PROMOTION : "1:N" %% Một campaign có nhiều promotion, promotion có thể độc lập
-    PROMOTION ||--o{ CUSTOMER : "N:M" %% Một promotion áp dụng cho nhiều khách, một khách nhận nhiều promotion
+    CAMPAIGN ||--o{ PROMOTION : "1:N"
+    PROMOTION ||--o{ CUSTOMER : "N:M"
+    %% Một chương trình có nhiều khách, một khách có thể tham gia nhiều chương trình
+    %% Một campaign có nhiều promotion, promotion có thể độc lập
+    %% Một promotion áp dụng cho nhiều khách, một khách nhận nhiều promotion
 ```
 
 **Ghi chú về quan hệ:**
