@@ -1,4 +1,3 @@
-
 # KIẾN TRÚC VÀ THIẾT KẾ HỆ THỐNG - SAAS QUẢN LÝ SALON NAILS
 
 ## 1. KIẾN TRÚC HỆ THỐNG (Architecture)
@@ -277,21 +276,31 @@ erDiagram
 
     %% Ví dụ: Một ORDER có thể chứa nhiều SERVICE/PRODUCT và ngược lại (N:M), thực tế sẽ cần bảng phụ.
 
-    %% REVIEW liên kết với CUSTOMER, STAFF, SALON, VISIT là 1:N (một khách có nhiều review, một staff có nhiều review...)
+    %% REVIEW chỉ liên kết với VISIT, từ đó truy ngược ra các entity khác
+    VISIT ||--o{ REVIEW : "1:N"
+
+    %% Loyalty program
+    LOYALTY_PROGRAM ||--o{ CUSTOMER : "N:M" %% Một chương trình có nhiều khách, một khách có thể tham gia nhiều chương trình
+
+    %% Promotion
+    CAMPAIGN ||--o{ PROMOTION : "1:N" %% Một campaign có nhiều promotion, promotion có thể độc lập
+    PROMOTION ||--o{ CUSTOMER : "N:M" %% Một promotion áp dụng cho nhiều khách, một khách nhận nhiều promotion
 ```
 
 **Ghi chú về quan hệ:**
 
 - 1:N (một-nhiều):
     - Một SALON có nhiều CUSTOMER, STAFF, SERVICE, PRODUCT, CAMPAIGN
-    - Một CUSTOMER có nhiều VISIT, ORDER, APPOINTMENT, REVIEW, NOTIFICATION
+    - Một CUSTOMER có nhiều VISIT, ORDER, APPOINTMENT, NOTIFICATION
     - Một STAFF có nhiều VISIT, ORDER, APPOINTMENT
-    - Một CAMPAIGN có nhiều APPOINTMENT
-    - Một VISIT/ORDER/STAFF/SALON/CUSTOMER có nhiều REVIEW
-
+    - Một CAMPAIGN có nhiều APPOINTMENT, nhiều PROMOTION
+    - Một VISIT có nhiều REVIEW (review chỉ cần liên kết với VISIT, từ đó truy ngược ra CUSTOMER, STAFF, SALON)
+    - Một LOYALTY_PROGRAM có nhiều CUSTOMER
+    - Một PROMOTION có thể thuộc một CAMPAIGN
 - N:M (nhiều-nhiều):
     - ORDER và SERVICE/PRODUCT là N:M (một đơn hàng có nhiều dịch vụ/sản phẩm, một dịch vụ/sản phẩm có thể thuộc nhiều đơn hàng). Thực tế sẽ cần bảng phụ (ORDER_DETAIL), nhưng ở mức khái niệm chỉ cần note.
-
+    - LOYALTY_PROGRAM và CUSTOMER là N:M (khách có thể tham gia nhiều chương trình, chương trình có nhiều khách)
+    - PROMOTION và CUSTOMER là N:M (một promotion áp dụng cho nhiều khách, một khách nhận nhiều promotion)
 - 1:1 (một-một):
     - Không có mối quan hệ 1:1 rõ ràng trong nghiệp vụ chính của hệ thống này.
 
